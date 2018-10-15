@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,6 +51,7 @@ public class CafeteriaDetailsView extends AppCompatActivity implements Selectabl
     private ProgressDialog pd;
     private ArrayList<AlimentosCafeteria> listaCompletaCafeteria = new ArrayList<AlimentosCafeteria>();
     private Context mContext = this;
+    private TextView campoConteoPrecios = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,19 @@ public class CafeteriaDetailsView extends AppCompatActivity implements Selectabl
     @Override
     public void onItemSelected(SelectableItem selectableItem) {
 
+        campoConteoPrecios = (TextView) findViewById(R.id.enunciadoCafeteria);
         List<AlimentosCafeteria> selectedItems = adapter.getSelectedItems();
-        Snackbar.make(recyclerView,"Selected item is "+selectableItem.getNombreAlimento()+
-                ", Totally  selectem item count is "+selectedItems.size(),Snackbar.LENGTH_LONG).show();
+        int conteo = 0;
+
+        for (int i = 0; i < selectedItems.size() ; i++){
+            conteo = conteo + Integer.parseInt(selectedItems.get(i).getPrecioAlimento());
+        }
+
+        campoConteoPrecios.setText("$ "+ conteo );
+
+        Snackbar.make(recyclerView,"Seleccionaste: "+selectableItem.getNombreAlimento()+
+                ", Tiene un precio de: "+selectableItem.getPrecioAlimento(),Snackbar.LENGTH_LONG).show();
+        //selectedItems.size()
     }
 
     public void inicializarAlimentos(){

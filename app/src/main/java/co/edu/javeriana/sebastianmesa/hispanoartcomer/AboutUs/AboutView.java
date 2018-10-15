@@ -37,7 +37,7 @@ public class AboutView extends AppCompatActivity {
                         "Nosotros creemos que si, y esta app te ayudará a conseguirlo.")
                 .isRTL(false)
                 .setImage(R.drawable.ic_leon)
-                .addItem(new Element().setTitle("Version 0.2"))
+                .addItem(new Element().setTitle("Version 0.3"))
                 .addItem(grupo)
                 .addItem(desarrollador)
                 .addItem(empty)

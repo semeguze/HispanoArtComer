@@ -15,7 +15,7 @@
         android:gravity="center_vertical"
         android:textStyle="bold"
         android:textSize="14sp"
-        android:text="hi"
+        android:text="placeHolder"
         android:checkMark="?android:attr/listChoiceIndicatorSingle"
         android:paddingTop="16dp"
         android:paddingRight="16dp"

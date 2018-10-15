@@ -15,107 +15,6 @@ import java.util.List;
 
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 
-//public class SelectableAdapter extends RecyclerView.Adapter implements SelectableViewHolder.OnItemSelectedListener {
-//
-//    private final List<SelectableItem> mValues;
-//    private boolean isMultiSelectionEnabled = false;
-//    SelectableViewHolder.OnItemSelectedListener listener;
-//
-//
-//
-//    public SelectableAdapter( SelectableViewHolder.OnItemSelectedListener listener,
-//                              List<AlimentosCafeteria> alimentos,boolean isMultiSelectionEnabled) {
-//        this.listener = listener;
-//        this.isMultiSelectionEnabled = isMultiSelectionEnabled;
-//
-//        mValues = new ArrayList<>();
-//        Log.e("CAF-help", "Antes del for SelAdapter");
-//        for (AlimentosCafeteria alimento : alimentos) {
-//            //Log.e("CAF-help", "Antes del for SelAdapter: " + alimento.getNombreAlimento());
-//            mValues.add(new SelectableItem(alimento, false));
-//        }
-//
-//        Log.e("CAF-help", "Size mvalues: " + mValues.size());
-//
-//    }
-//
-//    @Override
-//    public SelectableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View itemView = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.checked_item, parent, false);
-//
-//        return new SelectableViewHolder(itemView, this);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-//
-//        SelectableViewHolder holder = (SelectableViewHolder) viewHolder;
-//        SelectableItem selectableItem = mValues.get(position);
-//        String name = selectableItem.getNombreAlimento();
-//        holder.textView.setText(name);
-//
-//        if (isMultiSelectionEnabled) {
-//            TypedValue value = new TypedValue();
-//            holder.textView.getContext().getTheme().resolveAttribute(android.R.attr.listChoiceIndicatorMultiple, value, true);
-//            int checkMarkDrawableResId = value.resourceId;
-//            holder.textView.setCheckMarkDrawable(checkMarkDrawableResId);
-//        } else {
-//            TypedValue value = new TypedValue();
-//            holder.textView.getContext().getTheme().resolveAttribute(android.R.attr.listChoiceIndicatorSingle, value, true);
-//            int checkMarkDrawableResId = value.resourceId;
-//            holder.textView.setCheckMarkDrawable(checkMarkDrawableResId);
-//        }
-//
-//        holder.mItem = selectableItem;
-//        holder.setChecked(holder.mItem.isSelected());
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return mValues.size();
-//    }
-//
-//    public List<AlimentosCafeteria> getSelectedItems() {
-//
-//        List<AlimentosCafeteria> selectedItems = new ArrayList<>();
-//        for (SelectableItem item : mValues) {
-//            if (item.isSelected()) {
-//                selectedItems.add(item);
-//            }
-//        }
-//        return selectedItems;
-//    }
-//
-//    @Override
-//    public int getItemViewType(int position) {
-//        if(isMultiSelectionEnabled){
-//            return SelectableViewHolder.MULTI_SELECTION;
-//        }
-//        else{
-//            return SelectableViewHolder.SINGLE_SELECTION;
-//        }
-//    }
-//
-//    @Override
-//    public void onItemSelected(SelectableItem item) {
-//        if (!isMultiSelectionEnabled) {
-//
-//            for (SelectableItem selectableItem : mValues) {
-//                if (!selectableItem.equals(item)
-//                        && selectableItem.isSelected()) {
-//                    selectableItem.setSelected(false);
-//                } else if (selectableItem.equals(item)
-//                        && item.isSelected()) {
-//                    selectableItem.setSelected(true);
-//                }
-//            }
-//            notifyDataSetChanged();
-//        }
-//        listener.onItemSelected(item);
-//    }
-//}
-
 public class SelectableAdapter extends RecyclerView.Adapter implements SelectableViewHolder.OnItemSelectedListener {
 
     private final List<SelectableItem> mValues;
@@ -148,7 +47,8 @@ public class SelectableAdapter extends RecyclerView.Adapter implements Selectabl
         SelectableViewHolder holder = (SelectableViewHolder) viewHolder;
         SelectableItem selectableItem = mValues.get(position);
         String name = selectableItem.getNombreAlimento();
-        holder.textView.setText(name);
+        String price = selectableItem.getPrecioAlimento();
+        holder.textView.setText(name + "\n $" + price);
         if (isMultiSelectionEnabled) {
             TypedValue value = new TypedValue();
             holder.textView.getContext().getTheme().resolveAttribute(android.R.attr.listChoiceIndicatorMultiple, value, true);

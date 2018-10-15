@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/BackColor"
+    tools:context="co.edu.javeriana.sebastianmesa.hispanoartcomer.Login.CompleteInfoView">
+
+    <LinearLayout
+        android:id="@+id/newUserData"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/newUserMedia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HISPANO ARTCOMER"
+                android:textStyle="bold"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_leon" />
+
+
+        </LinearLayout>
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/campoSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mi sexo"
+            app:met_baseColor="@color/black"
+            app:met_floatingLabel="normal"
+            app:met_iconLeft="@drawable/ic_person_white_48dp"
+            app:met_iconPadding="0dp"
+            app:met_primaryColor="@color/azulColegio"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/rojoColegio" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/campoCurso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mi curso"
+            app:met_baseColor="@color/black"
+            app:met_floatingLabel="normal"
+            app:met_iconLeft="@drawable/ic_person_white_48dp"
+            app:met_iconPadding="0dp"
+            app:met_primaryColor="@color/azulColegio"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/rojoColegio" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/campoEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mi edad"
+            app:met_baseColor="@color/black"
+            app:met_floatingLabel="normal"
+            app:met_iconLeft="@drawable/ic_person_white_48dp"
+            app:met_iconPadding="0dp"
+            app:met_primaryColor="@color/azulColegio"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/rojoColegio" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/campoPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mi peso"
+            app:met_baseColor="@color/black"
+            app:met_floatingLabel="normal"
+            app:met_iconLeft="@drawable/ic_person_white_48dp"
+            app:met_iconPadding="0dp"
+            app:met_primaryColor="@color/azulColegio"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/rojoColegio" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/campoEstatura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mi estatura"
+            app:met_baseColor="@color/black"
+            app:met_floatingLabel="normal"
+            app:met_iconLeft="@drawable/ic_person_white_48dp"
+            app:met_iconPadding="0dp"
+            app:met_primaryColor="@color/azulColegio"
+            app:met_singleLineEllipsis="true"
+            app:met_underlineColor="@color/rojoColegio" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/newUserMedia"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/newUserActions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/newUserActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/newUserComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:onClick="completeUserBtn"
+            android:text="Completar datos"
+            tools:layout_editor_absoluteY="382dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

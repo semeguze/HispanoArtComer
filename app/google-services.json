@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "391974882369",
+    "firebase_url": "https://hispanoartcomer.firebaseio.com",
+    "project_id": "hispanoartcomer",
+    "storage_bucket": "hispanoartcomer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391974882369:android:e65692f09f7c9a98",
+        "android_client_info": {
+          "package_name": "co.edu.javeriana.sebastianmesa.hispanoartcomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391974882369-2gn9j9mcorhgr4cuku5j8nk5fpu7gfh7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANORVx4EwlMXa5A8Z7w6PS2Qs0MbkPU3A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

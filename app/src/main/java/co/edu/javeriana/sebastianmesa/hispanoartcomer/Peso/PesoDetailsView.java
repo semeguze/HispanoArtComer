@@ -12,7 +12,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,12 +21,18 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,26 +43,31 @@ import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
-    protected BarChart mChart;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEE, d MMM yyyy");
+    protected LineChart mChart;
     private SeekBar mSeekBarX, mSeekBarY;
     private TextView tvX, tvY;
+    private TextView fecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso_details_view);
 
-        tvX = findViewById(R.id.tvXMax);
+        //tvX = findViewById(R.id.tvXMax);
         tvY = findViewById(R.id.tvYMax);
 
-        mSeekBarX = findViewById(R.id.seekBar1);
-        mSeekBarY = findViewById(R.id.seekBar2);
+        //mSeekBarX = findViewById(R.id.seekBar1);
+        //mSeekBarY = findViewById(R.id.seekBar2);
+
+        fecha = (TextView) findViewById(R.id.fechaPesoLabel);
+        fecha.setText(FORMATTER.format(CalendarDay.today().getDate()));
 
         mChart = findViewById(R.id.chart1);
         //mChart.setOnChartValueSelectedListener(this);
 
-        mChart.setDrawBarShadow(false);
-        mChart.setDrawValueAboveBar(true);
+        //mChart.setDrawBarShadow(false);
+        //mChart.setDrawValueAboveBar(true);
 
         mChart.getDescription().setEnabled(false);
 
@@ -116,8 +127,8 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         setData(12, 50);
 
         // setting data
-        mSeekBarY.setProgress(50);
-        mSeekBarX.setProgress(12);
+        //mSeekBarY.setProgress(50);
+        //mSeekBarX.setProgress(12);
 
         //mSeekBarY.setOnSeekBarChangeListener(this);
         //mSeekBarX.setOnSeekBarChangeListener(this);
@@ -128,9 +139,9 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
 
         float start = 1f;
 
-        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
-        for (int i = (int) start; i < start + count + 1; i++) {
+        for (int i = (int) start; i < start + 5 + 1; i++) {
             float mult = (range + 1);
             float val = (float) (Math.random() * mult);
 
@@ -141,16 +152,17 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
             }
         }
 
-        BarDataSet set1;
+        LineDataSet set1;
 
         if (mChart.getData() != null &&
                 mChart.getData().getDataSetCount() > 0) {
-            set1 = (BarDataSet) mChart.getData().getDataSetByIndex(0);
+            set1 = (LineDataSet ) mChart.getLineData().getDataSetByIndex(0);
+            //set1 = (BarDataSet) mChart.getData().getDataSetByIndex(0);
             set1.setValues(yVals1);
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
         } else {
-            set1 = new BarDataSet(yVals1, "The year 2017");
+            set1 = new LineDataSet(yVals1, "The year 2017");
 
             set1.setDrawIcons(false);
 
@@ -181,12 +193,12 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
             set1.setColor(startColor5);
             //setGradientColors(gradientColors);
 
-            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             dataSets.add(set1);
 
-            BarData data = new BarData(dataSets);
+            LineData data = new LineData(dataSets);
             data.setValueTextSize(10f);
-            data.setBarWidth(0.9f);
+            //data.setBarWidth(0.9f);
 
             mChart.setData(data);
         }

@@ -2,6 +2,7 @@
 package co.edu.javeriana.sebastianmesa.hispanoartcomer.Peso;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.components.MarkerView;
@@ -40,6 +41,7 @@ public class XYMarkerView extends MarkerView {
     public void refreshContent(Entry e, Highlight highlight) {
 
         tvContent.setText("x: " + xAxisValueFormatter.getFormattedValue(e.getX(), null) + ", y: " + format.format(e.getY()));
+        tvContent.setTextColor(Color.BLACK);
 
         super.refreshContent(e, highlight);
     }

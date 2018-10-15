@@ -124,13 +124,13 @@ public class SelectableAdapter extends RecyclerView.Adapter implements Selectabl
 
 
     public SelectableAdapter( SelectableViewHolder.OnItemSelectedListener listener,
-                              List<Item> items,boolean isMultiSelectionEnabled) {
+                              List<AlimentosCafeteria> alimentos,boolean isMultiSelectionEnabled) {
         this.listener = listener;
         this.isMultiSelectionEnabled = isMultiSelectionEnabled;
 
         mValues = new ArrayList<>();
-        for (Item item : items) {
-            mValues.add(new SelectableItem(item, false));
+        for (AlimentosCafeteria alimento : alimentos) {
+            mValues.add(new SelectableItem(alimento, false));
         }
     }
 
@@ -147,7 +147,7 @@ public class SelectableAdapter extends RecyclerView.Adapter implements Selectabl
 
         SelectableViewHolder holder = (SelectableViewHolder) viewHolder;
         SelectableItem selectableItem = mValues.get(position);
-        String name = selectableItem.getName();
+        String name = selectableItem.getNombreAlimento();
         holder.textView.setText(name);
         if (isMultiSelectionEnabled) {
             TypedValue value = new TypedValue();
@@ -170,9 +170,9 @@ public class SelectableAdapter extends RecyclerView.Adapter implements Selectabl
         return mValues.size();
     }
 
-    public List<Item> getSelectedItems() {
+    public List<AlimentosCafeteria> getSelectedItems() {
 
-        List<Item> selectedItems = new ArrayList<>();
+        List<AlimentosCafeteria> selectedItems = new ArrayList<>();
         for (SelectableItem item : mValues) {
             if (item.isSelected()) {
                 selectedItems.add(item);

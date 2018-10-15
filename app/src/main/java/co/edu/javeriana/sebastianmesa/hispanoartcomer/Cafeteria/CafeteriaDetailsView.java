@@ -61,40 +61,11 @@ public class CafeteriaDetailsView extends AppCompatActivity implements Selectabl
     }
 
 
-    public List<Item> generateItems(){
-
-        List<Item> selectableItems = new ArrayList<>();
-
-        //selectableItems.add(new Item(listaCompletaCafeteria.get(0).getNombreAlimento(), ""));
-
-        selectableItems.add(new Item("cem: \n$1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("cem: $1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("cem: $1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("cem: $1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("cem: $1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-        selectableItems.add(new Item("cem: $1.500","karaca"));
-        selectableItems.add(new Item("sezen: $1.500","aksu"));
-        selectableItems.add(new Item("baris: $1.500","manco"));
-
-        return selectableItems;
-    }
-
     @Override
     public void onItemSelected(SelectableItem selectableItem) {
 
-        List<Item> selectedItems = adapter.getSelectedItems();
-        Snackbar.make(recyclerView,"Selected item is "+selectableItem.getName()+
+        List<AlimentosCafeteria> selectedItems = adapter.getSelectedItems();
+        Snackbar.make(recyclerView,"Selected item is "+selectableItem.getNombreAlimento()+
                 ", Totally  selectem item count is "+selectedItems.size(),Snackbar.LENGTH_LONG).show();
     }
 
@@ -199,9 +170,6 @@ public class CafeteriaDetailsView extends AppCompatActivity implements Selectabl
 
                     }
 
-                    //listaCompletaCafeteria = alimentosJSON;
-                    Log.e("E/CAF-help", "Antes de salir con JSON" + alimentosJSON.size());
-                    Log.e("E/CAF-help", "Antes de salir con List" + listaCompletaCafeteria.size());
 
                     //generarLsita();
 
@@ -239,13 +207,11 @@ public class CafeteriaDetailsView extends AppCompatActivity implements Selectabl
                 pd.dismiss();
             }
 
-            Log.e("E/CAF-help", "Hecho");
-
             LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
             recyclerView = (RecyclerView) findViewById(R.id.selection_list);
             recyclerView.setLayoutManager(layoutManager);
-            List<Item> selectableItems = generateItems();
-            adapter = new SelectableAdapter(CafeteriaDetailsView.this,selectableItems,false);
+            List<AlimentosCafeteria> selectableItems = listaCompletaCafeteria;
+            adapter = new SelectableAdapter(CafeteriaDetailsView.this,selectableItems,true);
             recyclerView.setAdapter(adapter);
 
         }

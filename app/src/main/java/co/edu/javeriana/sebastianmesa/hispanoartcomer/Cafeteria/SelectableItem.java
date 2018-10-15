@@ -19,12 +19,12 @@ package co.edu.javeriana.sebastianmesa.hispanoartcomer.Cafeteria;
 //    }
 //}
 
-public class SelectableItem extends Item{
+public class SelectableItem extends AlimentosCafeteria{
     private boolean isSelected = false;
 
 
-    public SelectableItem(Item item,boolean isSelected) {
-        super(item.getName(),item.getSurname());
+    public SelectableItem(AlimentosCafeteria alimento,boolean isSelected) {
+        super(alimento.getNombreAlimento(),alimento.getPrecioAlimento());
         this.isSelected = isSelected;
     }
 

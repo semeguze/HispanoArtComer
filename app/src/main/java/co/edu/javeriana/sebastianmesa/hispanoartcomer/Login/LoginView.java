@@ -59,7 +59,6 @@ public class LoginView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
 
         //Inicializar SDK's redes sociales__
         TwitterConfig config = new TwitterConfig.Builder(this)

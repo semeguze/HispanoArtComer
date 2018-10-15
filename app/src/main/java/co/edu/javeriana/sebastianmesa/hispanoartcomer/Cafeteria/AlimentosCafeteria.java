@@ -2,28 +2,28 @@ package co.edu.javeriana.sebastianmesa.hispanoartcomer.Cafeteria;
 
 public class AlimentosCafeteria {
 
-    private String name;
-    private String surname;
+    private String nombreAlimento;
+    private String precioAlimento;
 
-    public AlimentosCafeteria(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public AlimentosCafeteria(String nombreAlimento, String precioAlimento) {
+        this.nombreAlimento = nombreAlimento;
+        this.precioAlimento = precioAlimento;
     }
 
-    public String getName() {
-        return name;
+    public String getNombreAlimento() {
+        return nombreAlimento;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombreAlimento(String nombreAlimento) {
+        this.nombreAlimento = nombreAlimento;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPrecioAlimento() {
+        return precioAlimento;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPrecioAlimento(String precioAlimento) {
+        this.precioAlimento = precioAlimento;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class AlimentosCafeteria {
             return false;
 
         AlimentosCafeteria itemCompare = (AlimentosCafeteria) obj;
-        if(itemCompare.getName().equals(this.getName()))
+        if(itemCompare.getNombreAlimento().equals(this.getNombreAlimento()))
             return true;
 
         return false;

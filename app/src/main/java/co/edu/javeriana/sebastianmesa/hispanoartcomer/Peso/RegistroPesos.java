@@ -3,9 +3,9 @@ package co.edu.javeriana.sebastianmesa.hispanoartcomer.Peso;
 public class RegistroPesos {
 
     private String fecha;
-    private Long peso;
+    private float peso;
 
-    public RegistroPesos(String fecha, Long peso) {
+    public RegistroPesos(String fecha, float peso) {
         this.fecha = fecha;
         this.peso = peso;
     }
@@ -18,11 +18,12 @@ public class RegistroPesos {
         this.fecha = fecha;
     }
 
-    public Long getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(Long peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
+
 }

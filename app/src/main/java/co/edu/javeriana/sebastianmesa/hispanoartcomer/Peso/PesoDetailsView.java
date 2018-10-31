@@ -1,6 +1,8 @@
 package co.edu.javeriana.sebastianmesa.hispanoartcomer.Peso;
 
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -11,7 +13,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +56,8 @@ import org.threeten.bp.format.DateTimeFormatter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -56,9 +65,12 @@ import java.util.List;
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 
 public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
-        OnChartValueSelectedListener {
+        OnChartValueSelectedListener, NumberPicker.OnValueChangeListener {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEE, d MMM yyyy");
+    private static final String CERO = "0";
+    private static final String BARRA = "/";
+
     protected LineChart mChart;
     private SeekBar mSeekBarX, mSeekBarY;
     private TextView tvX, tvY;
@@ -68,6 +80,19 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
 
     public ArrayList<Entry> yData;
     public ArrayList<ILineDataSet> dataSets;
+
+    //Relacionado a la selección de fecha
+    public final Calendar c = Calendar.getInstance();
+
+    //Variables para obtener la fecha
+    final int mes = c.get(Calendar.MONTH);
+    final int dia = c.get(Calendar.DAY_OF_MONTH);
+    final int anio = c.get(Calendar.YEAR);
+
+    //Widgets
+    EditText etFecha;
+    EditText etPeso;
+    ImageButton ibObtenerFecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +192,43 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
 //        mChart.setGridBackgroundColor(mFillColor);
 //        mChart.setDrawGridBackground(true);
 
+
+        etFecha = (EditText) findViewById(R.id.campoFechaPesoIngresarEditText);
+        etPeso = (EditText) findViewById(R.id.campoPesoIngresarEditText);
+        ibObtenerFecha = (ImageButton) findViewById(R.id.imgCalendario);
+
+        ibObtenerFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtenerFecha();
+            }
+        });
+
+
+    }
+
+
+
+
+    private void obtenerFecha(){
+        DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                //Esta variable lo que realiza es aumentar en uno el mes ya que comienza desde 0 = enero
+                final int mesActual = month + 1;
+                //Formateo el día obtenido: antepone el 0 si son menores de 10
+                String diaFormateado = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
+                //Formateo el mes obtenido: antepone el 0 si son menores de 10
+                String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
+                //Muestro la fecha con el formato deseado
+                etFecha.setText(year  + BARRA + mesFormateado + BARRA + diaFormateado);
+
+
+            }
+            //Estos valores deben ir en ese orden, de lo contrario no mostrara la fecha actual
+        },anio, mes, dia);
+        //Muestro el widget
+        recogerFecha.show();
 
     }
 
@@ -309,12 +371,34 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
                         ArrayList<RegistroPesos> listaRegistroPesos = new ArrayList<RegistroPesos>();
 
                         for (DataSnapshot dsp : snapshot.getChildren()){
-                            Log.i("InfoRegistro","Valores: " + dsp.child("Peso").getValue(Long.class));
-                            RegistroPesos aAgregar = new RegistroPesos(dsp.getKey(), dsp.child("Peso").getValue(Long.class) );
+                            Log.i("InfoRegistro","Valores: " + dsp.child("Peso").getValue(Float.class));
+                            RegistroPesos aAgregar = new RegistroPesos(dsp.getKey(), dsp.child("Peso").getValue(Float.class) );
                             listaRegistroPesos.add(aAgregar);
                         }
 
                         Log.i("InfoRegistro","Tam Lista: " + listaRegistroPesos.size());
+
+//                        for(RegistroPesos toSort : listaRegistroPesos){
+//                            Log.e("sortList Sin: ", toSort.getPeso().toString());
+//                        }
+
+                        Collections.sort(listaRegistroPesos, new Comparator<RegistroPesos>(){
+                            public int compare(RegistroPesos obj1, RegistroPesos obj2) {
+                                // ## Ascending order
+                                return obj1.getFecha().compareToIgnoreCase(obj2.getFecha()); // To compare string values
+                                //return Long.valueOf(obj1.getPeso()).compareTo(obj2.getPeso()); // To compare integer values
+
+                                // ## Descending order
+                                // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values
+                                // return Integer.valueOf(obj2.empId).compareTo(obj1.empId); // To compare integer values
+                            }
+                        });
+
+//
+//                        for(RegistroPesos toSort : listaRegistroPesos){
+//                            Log.e("sortList Con: ", toSort.getPeso().toString());
+//                        }
+
 
                         for (int i = 0; i < listaRegistroPesos.size() ; i++) {
                             String[] fechaIncorporacion = listaRegistroPesos.get(i).getFecha().split("-");
@@ -362,7 +446,14 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference db = database.getReference();
 
-        db.child("usuarios").child(uid).child("RegistroPeso").child("2018-11-5").child("Peso").setValue(33);
+        etFecha = (EditText) findViewById(R.id.campoFechaPesoIngresarEditText);
+        etPeso = (EditText) findViewById(R.id.campoPesoIngresarEditText);
+
+        String rs = etFecha.getText().toString().replace("/","-");
+
+        Log.i("FechaPrueba", "La fecha es: " + rs);
+
+        db.child("usuarios").child(uid).child("RegistroPeso").child(rs).child("Peso").setValue(Float.parseFloat(etPeso.getText().toString()));
 
     }
 
@@ -395,6 +486,16 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
 
     @Override
     public void onNothingSelected() {
+
+    }
+
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

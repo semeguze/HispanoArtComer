@@ -11,7 +11,7 @@ public class DayAxisValueFormatter implements IAxisValueFormatter
 {
 
     protected String[] mMonths = new String[]{
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
     };
 
     private BarLineChartBase<?> chart;
@@ -38,31 +38,31 @@ public class DayAxisValueFormatter implements IAxisValueFormatter
 
             int dayOfMonth = determineDayOfMonth(days, month + 12 * (year - 2016));
 
-            String appendix = "th";
+            String appendix = " de";
 
-            switch (dayOfMonth) {
-                case 1:
-                    appendix = "st";
-                    break;
-                case 2:
-                    appendix = "nd";
-                    break;
-                case 3:
-                    appendix = "rd";
-                    break;
-                case 21:
-                    appendix = "st";
-                    break;
-                case 22:
-                    appendix = "nd";
-                    break;
-                case 23:
-                    appendix = "rd";
-                    break;
-                case 31:
-                    appendix = "st";
-                    break;
-            }
+//            switch (dayOfMonth) {
+//                case 1:
+//                    appendix = "ro";
+//                    break;
+//                case 2:
+//                    appendix = "do";
+//                    break;
+//                case 3:
+//                    appendix = "ro";
+//                    break;
+//                case 21:
+//                    appendix = "to";
+//                    break;
+//                case 22:
+//                    appendix = "nd";
+//                    break;
+//                case 23:
+//                    appendix = "rd";
+//                    break;
+//                case 31:
+//                    appendix = "st";
+//                    break;
+//            }
 
             return dayOfMonth == 0 ? "" : dayOfMonth + appendix + " " + monthName;
         }
@@ -80,7 +80,7 @@ public class DayAxisValueFormatter implements IAxisValueFormatter
             else if (year > 1582)
                 is29Feb = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 
-            return is29Feb ? 29 : 28;
+            return is29Feb ? 28 : 29;
         }
 
         if (month == 3 || month == 5 || month == 8 || month == 10)

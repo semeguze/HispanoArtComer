@@ -7,9 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.github.mikephil.charting.data.BarEntry;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.IndexView;
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.PrefManager;
@@ -58,11 +63,14 @@ public class CompleteInfoView extends AppCompatActivity {
         String pesoInfo = peso.getText().toString().trim();
         String estaturaInfo = estatura.getText().toString().trim();
 
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+
         mDatabase.child(nameDB).child(mAuth.getUid()).child("Sexo").setValue(sexoInfo);
         mDatabase.child(nameDB).child(mAuth.getUid()).child("Curso").setValue(cursoInfo);
         mDatabase.child(nameDB).child(mAuth.getUid()).child("Edad").setValue(edadInfo);
         mDatabase.child(nameDB).child(mAuth.getUid()).child("Peso").setValue(pesoInfo);
         mDatabase.child(nameDB).child(mAuth.getUid()).child("Estatura").setValue(estaturaInfo);
+        mDatabase.child(nameDB).child(mAuth.getUid()).child("Fecha").setValue(timeStamp);
 
         prefManager.setIsInfoComplete(false);
 

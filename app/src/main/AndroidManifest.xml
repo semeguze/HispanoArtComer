@@ -52,6 +52,7 @@
         <activity android:name=".Cafeteria.CafeteriaDetailsView" />
         <activity android:name=".Peso.PesoDetailsView" />
         <activity android:name=".Puntos.PuntosDetailsView" />
+        <activity android:name=".Puntos.Questions" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

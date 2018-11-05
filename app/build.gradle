@@ -82,6 +82,9 @@ dependencies {
     //Graph charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
+    //Progress circle
+    implementation 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+
 
 }
 

@@ -232,7 +232,7 @@ public class RestauranteDetailsView extends AppCompatActivity implements OnDateS
                 return;
             }
 
-            widget.addDecorator(new EventDecorator(Color.RED, calendarDays));
+            //widget.addDecorator(new EventDecorator(Color.RED, calendarDays));
         }
     }
 
@@ -314,6 +314,10 @@ public class RestauranteDetailsView extends AppCompatActivity implements OnDateS
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
+    public void informar(){
+        Toast.makeText(this, "Selecciona una fecha.", Toast.LENGTH_SHORT).show();
+    }
+
     private class JsonTask extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
@@ -323,6 +327,9 @@ public class RestauranteDetailsView extends AppCompatActivity implements OnDateS
             pd.setMessage("Comprobando información de menú nueva");
             pd.setCancelable(false);
             pd.show();
+
+            informar();
+
         }
 
         protected String doInBackground(String... params) {

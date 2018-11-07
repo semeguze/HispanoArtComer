@@ -36,6 +36,8 @@ public class FirstTimeView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
+
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
         //Log.d("CH", "Valor isFirstTimeL: " + prefManager.isFirstTimeLaunch());
@@ -43,8 +45,11 @@ public class FirstTimeView extends AppCompatActivity {
         Log.d("ACKI", "isFisrComplete (onCreate en FirstTimeView)-> " + prefManager.isFirstTimeLaunch());
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
+
             finish();
         }
+
+
 
 
         // Making notification bar transparent
@@ -126,10 +131,17 @@ public class FirstTimeView extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
+        //prefManager.setFirstTimeLaunch(false);
 
         Log.d("ACKI", "isInfoComplete (launchHomeScreen en FirstTimeView) -> " + prefManager.isInfoComplete());
         Log.d("ACKI", "isFisrComplete (launchHomeScreen en FirstTimeView) -> " + prefManager.isFirstTimeLaunch());
+
+        startActivity(new Intent(FirstTimeView.this, CompleteInfoView.class));
+        finish();
+    }
+
+    private void launchCompleteScreen() {
+        //prefManager.setFirstTimeLaunch(false);
 
         startActivity(new Intent(FirstTimeView.this, CompleteInfoView.class));
         finish();

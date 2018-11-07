@@ -93,6 +93,8 @@ public class AlimentosRestauranteAdapter extends RecyclerView.Adapter<AlimentosR
             count = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
+
+            overflow.setVisibility(View.GONE);
         }
 
 
@@ -145,12 +147,12 @@ public class AlimentosRestauranteAdapter extends RecyclerView.Adapter<AlimentosR
 
         Glide.with(mContext).load(alimentosMenu.getThumbnail()).into(holder.thumbnail);
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.overflow);
-            }
-        });
+//        holder.overflow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //showPopupMenu(holder.overflow);
+//            }
+//        });
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override

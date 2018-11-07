@@ -38,6 +38,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 
+import co.edu.javeriana.sebastianmesa.hispanoartcomer.IndexView;
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
@@ -58,7 +59,10 @@ public class LoginView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+
+        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
 
         //Inicializar SDK's redes sociales__
         TwitterConfig config = new TwitterConfig.Builder(this)
@@ -118,6 +122,9 @@ public class LoginView extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null){
+
+                    
+
                     startActivity(new Intent(getBaseContext(), FirstTimeView.class));
                     finish();
                 }
@@ -187,6 +194,9 @@ public class LoginView extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         pass.setText("");
+
+                        //startActivity(new Intent(getBaseContext(), IndexView.class));
+
                         Toast.makeText(LoginView.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -72,7 +72,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.overflow);
+                //showPopupMenu(holder.overflow);
             }
         });
 
@@ -99,10 +99,13 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                     mContext.startActivity(intent);
                 }
                 if (position == 3){
-                    Intent intent = new Intent(mContext, PuntosDetailsView.class);
-                    intent.putExtra("seleccionNum",position );
-                    intent.putExtra("seleccionName", cartaMenuList.get(position).getName());
-                    mContext.startActivity(intent);
+//                    Intent intent = new Intent(mContext, PuntosDetailsView.class);
+//                    intent.putExtra("seleccionNum",position );
+//                    intent.putExtra("seleccionName", cartaMenuList.get(position).getName());
+//                    mContext.startActivity(intent);
+
+                    Toast.makeText(mContext, "Disponible proximamente. En desarrollo.", Toast.LENGTH_SHORT).show();
+
                 }
 
             }

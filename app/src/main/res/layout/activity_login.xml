@@ -18,8 +18,8 @@
         android:id="@+id/transparentOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
         android:background="#99000000">
-
     </RelativeLayout>
 
     <LinearLayout
@@ -29,7 +29,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="89dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="31dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -38,12 +40,12 @@
             android:layout_gravity="center_horizontal">
 
             <!--<pl.droidsonroids.gif.GifTextView-->
-                <!--android:id="@+id/imageView14"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:background="@drawable/racegif" />-->
+            <!--android:id="@+id/imageView14"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@drawable/racegif" />-->
 
 
             <ImageView
@@ -139,6 +141,7 @@
                 android:text="O ingresa con..."
                 android:id="@+id/textView2"
                 android:textColor="#fff"
+                android:visibility="gone"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="15dp"
@@ -168,6 +171,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/twitter"
                     android:textColor="#ffffff"
+                    android:visibility="gone"
                     />
 
                 <ImageButton
@@ -175,6 +179,7 @@
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:text="Twitter"
+                    android:visibility="gone"
                     android:layout_gravity="center"
                     android:background="@drawable/facebook"
                     android:textColor="#ffffff"

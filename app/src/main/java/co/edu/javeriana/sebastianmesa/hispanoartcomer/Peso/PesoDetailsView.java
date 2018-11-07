@@ -203,6 +203,8 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
                 obtenerFecha();
             }
         });
+        mChart.setNoDataText("Cargando datos de la gráfica");
+        mChart.setNoDataTextColor(Color.BLACK);
 
 
     }

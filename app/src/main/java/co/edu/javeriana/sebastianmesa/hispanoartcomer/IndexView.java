@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.AboutUs.AboutView;
+import co.edu.javeriana.sebastianmesa.hispanoartcomer.Login.FirstTimeView;
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.Login.LoginView;
 
 public class IndexView extends AppCompatActivity {
@@ -96,11 +97,12 @@ public class IndexView extends AppCompatActivity {
         String uid = user.getUid();
         String name = user.getDisplayName();
 
-        if (name.contains("null")){
+        if (name.contains("null") || name == null){
             campoDeSubtitulo.setText("Hola de nuevo!");
         }else{
             campoDeSubtitulo.setText("Hola " + name +"!");
         }
+
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
@@ -155,7 +157,10 @@ public class IndexView extends AppCompatActivity {
                 break;
 
             case R.id.menuLogout:
+
                 logout();
+                FirebaseAuth.getInstance().signOut();
+
                 break;
 
         }

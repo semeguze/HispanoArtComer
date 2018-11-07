@@ -70,6 +70,7 @@
                 android:layout_toLeftOf="@+id/tvYMax"
                 android:layout_marginRight="5dp"
                 android:hint="dd/mm/yyyy"
+                android:editable="false"
                 android:paddingBottom="12dp" />
 
             <ImageButton
@@ -90,6 +91,7 @@
                 android:layout_toLeftOf="@+id/tvYMax"
                 android:layout_marginRight="5dp"
                 android:hint="0.0 kg"
+                android:inputType="numberDecimal"
                 android:paddingBottom="12dp" />
 
 

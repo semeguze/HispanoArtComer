@@ -28,6 +28,11 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.TwitterAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -123,10 +128,10 @@ public class LoginView extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null){
 
-                    
+                    isAlreadyThere();
 
-                    startActivity(new Intent(getBaseContext(), FirstTimeView.class));
-                    finish();
+                    //startActivity(new Intent(getBaseContext(), FirstTimeView.class));
+                    //finish();
                 }
             }
         });
@@ -164,6 +169,47 @@ public class LoginView extends AppCompatActivity {
         });
         //__FACEBOOK
 
+    }
+
+
+    private boolean isAlreadyThere (){
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference db = database.getReference();
+
+        db.child("usuarios").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String prueba = snapshot.child("Curso").getValue(String.class);
+
+                Log.i("checkIsAlreadythere2", ""+prueba);
+
+                if (prueba != null) {
+                    launchHomeScreenComplete();
+                    finish();
+                }else{
+                    startActivity(new Intent(getBaseContext(), FirstTimeView.class));
+                    finish();
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        return false;
+
+    }
+
+    private void launchHomeScreenComplete() {
+        startActivity(new Intent(this, IndexView.class));
+        finish();
     }
 
 

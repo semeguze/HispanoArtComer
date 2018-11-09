@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +50,7 @@ public class IndexView extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AlbumsAdapter adapter;
     private List<CartaMenu> cartaMenuList;
-    private TextView campoDeSubtitulo;
+    private TextView campoDeSubtitulo, titulo;
     private ImageView fondo;
 
     @Override
@@ -58,14 +60,25 @@ public class IndexView extends AppCompatActivity {
         setContentView(R.layout.activity_index_view);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            // Set the status bar to dark-semi-transparentish
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            Window window = this.getWindow();
 
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.fbutton_color_midnight_blue));
         }
 
         fondo = (ImageView) findViewById(R.id.backdrop);
 
+        titulo = (TextView) findViewById(R.id.love_music);
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Cheetah Kick.otf");
+        titulo.setTypeface(type);
+        titulo.setTextSize(60);
 
 
         int sdk = android.os.Build.VERSION.SDK_INT;
@@ -246,20 +259,23 @@ public class IndexView extends AppCompatActivity {
             int position = parent.getChildAdapterPosition(view); // item position
             int column = position % spanCount; // item column
 
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+            outRect.top = 20;
+            outRect.bottom = 5;
 
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing; // item bottom
+            if (includeEdge) {
+                outRect.left = 15; // spacing - column * ((1f / spanCount) * spacing)
+                outRect.right = 15; // (column + 1) * ((1f / spanCount) * spacing)
+
+//                if (position < spanCount) { // top edge
+//                    outRect.top = 10;
+//                }
+//                outRect.bottom = 10; // item bottom
             } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
+                outRect.left = 15; // column * ((1f / spanCount) * spacing)
+                outRect.right = 15; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+//                if (position >= spanCount) {
+//                    outRect.top = 10; // item top
+//                }
             }
         }
     }

@@ -4,8 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/BackColor"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     tools:context="co.edu.javeriana.sebastianmesa.hispanoartcomer.Login.NewUserView">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:background="@drawable/fondocielo"
+        android:scaleType="matrix" />
+
+    <RelativeLayout
+        android:id="@+id/transparentOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="#99000000">
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/newUserData"
@@ -22,54 +37,57 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:layout_marginTop="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HISPANO ARTCOMER"
-                android:textStyle="bold"
-                android:textSize="25dp" />
+                android:text="Hispano Artcomer"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="40dp" />
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_leon" />
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView15"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:src="@drawable/ic_leon" />-->
 
 
         </LinearLayout>
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_marginTop="30dp"
             android:id="@+id/newUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mi nombre de cuenta"
-            app:met_baseColor="@color/black"
-            app:met_floatingLabel="normal"
             app:met_iconLeft="@drawable/ic_person_white_48dp"
-            app:met_iconPadding="0dp"
-            app:met_primaryColor="@color/azulColegio"
-            app:met_singleLineEllipsis="true"
-            app:met_underlineColor="@color/rojoColegio" />
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/white"
+            app:met_underlineColor="#fff"
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/newUserEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mi correo electrónico"
-            app:met_baseColor="@color/black"
-            app:met_floatingLabel="normal"
             app:met_iconLeft="@drawable/ic_person_white_48dp"
-            app:met_iconPadding="0dp"
-            app:met_primaryColor="@color/azulColegio"
-            app:met_singleLineEllipsis="true"
-            app:met_underlineColor="@color/rojoColegio" />
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/white"
+            app:met_underlineColor="#fff"
+            app:met_singleLineEllipsis="true"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/newUserPass"
@@ -78,13 +96,12 @@
             android:hint="Contraseña"
             android:inputType="textPersonName"
             android:password="true"
-            app:met_baseColor="@color/black"
-            app:met_floatingLabel="normal"
             app:met_iconLeft="@drawable/ic_lock_white_48dp"
-            app:met_iconPadding="0dp"
-            app:met_primaryColor="@color/azulColegio"
-            app:met_singleLineEllipsis="true"
-            app:met_underlineColor="@color/rojoColegio" />
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/white"
+            app:met_underlineColor="#fff"
+            app:met_singleLineEllipsis="true"/>
 
 
     </LinearLayout>
@@ -113,25 +130,66 @@
         android:weightSum="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <!--<mehdi.sakout.fancybuttons.FancyButton-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:id="@+id/btn_signup"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:paddingRight="20dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--fancy:fb_borderColor="#FFFFFF"-->
+            <!--fancy:fb_borderWidth="1dp"-->
+            <!--fancy:fb_defaultColor="#FFFFFF"-->
+            <!--fancy:fb_focusColor="#bfd8e7"-->
+            <!--fancy:fb_radius="0dp"-->
+            <!--fancy:fb_text="Login"-->
+            <!--fancy:fb_textColor="#fff"-->
+
+            <!--fancy:fb_ghost="true"-->
+            <!--android:layout_marginTop="10dp"/>-->
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:layout_margin="5dp"
             android:id="@+id/newUserCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:onClick="cancel"
-            android:text="Cancelar"
-            tools:layout_editor_absoluteY="35dp" />
+            tools:layout_editor_absoluteY="35dp"
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#FFFFFF"
+            fancy:fb_focusColor="#bfd8e7"
+            fancy:fb_radius="0dp"
+            fancy:fb_text="Cancelar"
+            fancy:fb_textColor="#fff"
 
-        <Button
+            fancy:fb_ghost="true"
+            android:layout_marginTop="10dp"/>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:layout_margin="5dp"
             android:id="@+id/newUserComplete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:onClick="createUserBtn"
-            android:text="Crear cuenta"
-            tools:layout_editor_absoluteY="382dp" />
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#FFFFFF"
+            fancy:fb_focusColor="#bfd8e7"
+            fancy:fb_radius="0dp"
+            fancy:fb_text="Crear cuenta"
+            fancy:fb_textColor="#fff"
+
+            fancy:fb_ghost="true"
+            android:layout_marginTop="10dp"
+            />
 
     </LinearLayout>
 

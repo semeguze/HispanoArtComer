@@ -70,36 +70,36 @@ public class LoginView extends AppCompatActivity {
         Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
 
         //Inicializar SDK's redes sociales__
-        TwitterConfig config = new TwitterConfig.Builder(this)
-                .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig(getString(R.string.twitter_consumer_key), getString(R.string.twitter_consumer_secret)))
-                .debug(true)
-                .build();
-        Twitter.initialize(config);
-
-        FacebookSdk.sdkInitialize(this.getApplicationContext());
-
-        callbackManager = CallbackManager.Factory.create();
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Log.d("Success", "Login");
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(LoginView.this, "Login Cancel", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Toast.makeText(LoginView.this, exception.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+//        TwitterConfig config = new TwitterConfig.Builder(this)
+//                .logger(new DefaultLogger(Log.DEBUG))
+//                .twitterAuthConfig(new TwitterAuthConfig(getString(R.string.twitter_consumer_key), getString(R.string.twitter_consumer_secret)))
+//                .debug(true)
+//                .build();
+//        Twitter.initialize(config);
+//
+//        FacebookSdk.sdkInitialize(this.getApplicationContext());
+//
+//        callbackManager = CallbackManager.Factory.create();
+//
+//        LoginManager.getInstance().registerCallback(callbackManager,
+//                new FacebookCallback<LoginResult>() {
+//                    @Override
+//                    public void onSuccess(LoginResult loginResult) {
+//                        Log.d("Success", "Login");
+//                        handleFacebookAccessToken(loginResult.getAccessToken());
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {
+//                        Toast.makeText(LoginView.this, "Login Cancel", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    @Override
+//                    public void onError(FacebookException exception) {
+//                        Toast.makeText(LoginView.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+//                    }
+//                });
         //__Inicializar SDK's
 
         setContentView(R.layout.activity_login);

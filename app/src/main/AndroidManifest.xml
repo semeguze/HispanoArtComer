@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+        <!--<meta-data-->
+            <!--android:name="com.facebook.sdk.ApplicationId"-->
+            <!--android:value="@string/facebook_app_id" />-->
 
         <!-- <activity -->
         <!-- android:name="com.facebook.FacebookActivity" -->
@@ -45,7 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IndexView" />
+        <activity android:name=".IndexView"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Login.NewUserView" />
         <activity android:name=".Login.FirstTimeView" />
         <activity android:name=".Login.CompleteInfoView" />

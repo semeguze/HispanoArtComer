@@ -1,12 +1,15 @@
 package co.edu.javeriana.sebastianmesa.hispanoartcomer.Login;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -30,6 +33,7 @@ import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 public class CompleteInfoView extends AppCompatActivity {
 
     private EditText sexo, curso, edad, peso, estatura;
+    private TextView titulo;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private PrefManager prefManager;
@@ -40,7 +44,10 @@ public class CompleteInfoView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+
+        setStatusBarTranslucent(true);
 
         Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
 
@@ -64,6 +71,13 @@ public class CompleteInfoView extends AppCompatActivity {
         edad = findViewById(R.id.campoEdad);
         peso = findViewById(R.id.campoPeso);
         estatura = findViewById(R.id.campoEstatura);
+
+        titulo = (TextView) findViewById(R.id.titulo);
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Cheetah Kick.otf");
+        titulo.setTypeface(type);
+        titulo.setTextSize(60);
+
     }
 
     public void completeUserBtn(View view){
@@ -135,6 +149,15 @@ public class CompleteInfoView extends AppCompatActivity {
 
         return false;
 
+    }
+
+    protected void setStatusBarTranslucent(boolean makeTranslucent) {
+        if (makeTranslucent) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
     }
 
 

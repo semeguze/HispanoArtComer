@@ -2,12 +2,12 @@
     <string name="app_name">Hispano Artcomer</string>
     <string name="observablesRoot">db/observables/</string>
 
-    <string name="twitter_consumer_key" translatable="false">bLVOObh1G66Bh9D02V5aIGVrU</string>
-    <string name="twitter_consumer_secret" translatable="false">MZnYPW6f4abFxuwB0Bec3CEXcFBIioKSXZrnQJgmHhyUjKw1x3</string>
+    <!--<string name="twitter_consumer_key" translatable="false">bLVOObh1G66Bh9D02V5aIGVrU</string>-->
+    <!--<string name="twitter_consumer_secret" translatable="false">MZnYPW6f4abFxuwB0Bec3CEXcFBIioKSXZrnQJgmHhyUjKw1x3</string>-->
 
-    <string name="facebook_app_id">546855435647845</string>
-    <string name="fb_login_protocol_scheme">fb546855435647845</string>
-    <string name="title_activity_settings">Configuración</string>
+    <!--<string name="facebook_app_id">546855435647845</string>-->
+    <!--<string name="fb_login_protocol_scheme">fb546855435647845</string>-->
+    <!--<string name="title_activity_settings">Configuración</string>-->
 
     <!-- Strings related to Settings -->
 

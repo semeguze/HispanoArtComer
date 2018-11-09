@@ -3,13 +3,16 @@ package co.edu.javeriana.sebastianmesa.hispanoartcomer.Login;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,10 +43,14 @@ public class NewUserView extends AppCompatActivity {
     private FirebaseStorage bucket;
     private final int MAX_ATTEMPTS = 4;
     private int attempts = 0;
+    private TextView titulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+
+        setStatusBarTranslucent(true);
 
         Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
 
@@ -54,6 +61,13 @@ public class NewUserView extends AppCompatActivity {
         name = findViewById(R.id.newUserName);
         email = findViewById(R.id.newUserEmail);
         pass = findViewById(R.id.newUserPass);
+
+        titulo = (TextView) findViewById(R.id.titulo);
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Cheetah Kick.otf");
+        titulo.setTypeface(type);
+        titulo.setTextSize(60);
+
     }
 
     public void createUserBtn(View view){
@@ -142,6 +156,15 @@ public class NewUserView extends AppCompatActivity {
                 }
                 break;
             }
+        }
+    }
+
+    protected void setStatusBarTranslucent(boolean makeTranslucent) {
+        if (makeTranslucent) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
 }

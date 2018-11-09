@@ -67,7 +67,9 @@ public class LoginView extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
-        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
+
+
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
 
         //Inicializar SDK's redes sociales__
 //        TwitterConfig config = new TwitterConfig.Builder(this)
@@ -185,6 +187,26 @@ public class LoginView extends AppCompatActivity {
                 String prueba = snapshot.child("Curso").getValue(String.class);
 
                 Log.i("checkIsAlreadythere2", ""+prueba);
+
+
+//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                DatabaseReference db = database.getReference();
+
+//                db.child("usuarios").child(uid).child("RegistroPeso").addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                        Log.i("checkIsAlreadythere2", "interno: entra");
+//                        finish();
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
 
                 if (prueba != null) {
                     launchHomeScreenComplete();

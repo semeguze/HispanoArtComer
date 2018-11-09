@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.Logic.Entities.dbUser;
@@ -52,7 +56,7 @@ public class NewUserView extends AppCompatActivity {
 
         setStatusBarTranslucent(true);
 
-        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
 
         setContentView(R.layout.activity_new_user_view);
         emailRegex = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -62,13 +66,17 @@ public class NewUserView extends AppCompatActivity {
         email = findViewById(R.id.newUserEmail);
         pass = findViewById(R.id.newUserPass);
 
-        titulo = (TextView) findViewById(R.id.titulo);
+        //believe.cht.fadeintextview.TextView textView = findViewById(R.id.titulo);
 
+        titulo = (TextView) findViewById(R.id.titulo);
+//
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Cheetah Kick.otf");
         titulo.setTypeface(type);
         titulo.setTextSize(60);
 
     }
+
+    
 
     public void createUserBtn(View view){
 //        if(photoBitMap==null){

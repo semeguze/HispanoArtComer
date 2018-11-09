@@ -3,6 +3,7 @@ package co.edu.javeriana.sebastianmesa.hispanoartcomer.Peso;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -62,6 +63,7 @@ import java.util.Date;
 import java.util.List;
 
 
+import co.edu.javeriana.sebastianmesa.hispanoartcomer.AboutUs.AboutView;
 import co.edu.javeriana.sebastianmesa.hispanoartcomer.R;
 
 public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
@@ -99,6 +101,8 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso_details_view);
 
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
+
         //tvX = findViewById(R.id.tvXMax);
         tvY = findViewById(R.id.tvYMax);
 
@@ -124,6 +128,7 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         mChart.setPinchZoom(false);
 
         mChart.setDrawGridBackground(true);
+
         // mChart.setDrawYLabels(false);
 
         IAxisValueFormatter xAxisFormatter = new DayAxisValueFormatter(mChart);
@@ -134,6 +139,7 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         xAxis.setGranularity(1f); // only intervals of 1 day
         xAxis.setLabelCount(7);
         xAxis.setValueFormatter(xAxisFormatter);
+        xAxis.setTextColor(Color.WHITE);
 
         IAxisValueFormatter custom = new MyAxisValueFormatter();
 
@@ -144,6 +150,7 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
         leftAxis.setTextSize(15f);
+        leftAxis.setTextColor(Color.WHITE);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setDrawLabels(false);
@@ -162,6 +169,7 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         l.setFormSize(9f);
         l.setTextSize(11f);
         l.setXEntrySpace(4f);
+        l.setTextColor(Color.WHITE);
         // l.setExtra(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
         // "def", "ghj", "ikl", "mno" });
         // l.setCustom(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
@@ -204,8 +212,9 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
             }
         });
         mChart.setNoDataText("Cargando datos de la gráfica");
-        mChart.setNoDataTextColor(Color.BLACK);
+        mChart.setNoDataTextColor(Color.WHITE);
 
+        mChart.setBackgroundColor(Color.TRANSPARENT);
 
     }
 
@@ -223,12 +232,19 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
                 //Formateo el mes obtenido: antepone el 0 si son menores de 10
                 String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
                 //Muestro la fecha con el formato deseado
+
                 etFecha.setText(year  + BARRA + mesFormateado + BARRA + diaFormateado);
 
 
             }
             //Estos valores deben ir en ese orden, de lo contrario no mostrara la fecha actual
         },anio, mes, dia);
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, 0);
+
+        recogerFecha.getDatePicker().setMinDate(cal.getTimeInMillis());
+
         //Muestro el widget
         recogerFecha.show();
 
@@ -318,7 +334,7 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
                     set1.setFillAlpha(100);
                     set1.setDrawFilled(true);
                     set1.setFillColor(startColor4);
-                    set1.setHighLightColor(Color.RED);
+                    set1.setHighLightColor(Color.BLUE);
                     set1.setDrawCircleHole(true);
                     //setGradientColors(gradientColors);
 
@@ -456,6 +472,8 @@ public class PesoDetailsView extends AppCompatActivity implements SeekBar.OnSeek
         Log.i("FechaPrueba", "La fecha es: " + rs);
 
         db.child("usuarios").child(uid).child("RegistroPeso").child(rs).child("Peso").setValue(Float.parseFloat(etPeso.getText().toString()));
+
+        //startActivity(new Intent(getBaseContext(), PesoDetailsView.class));
 
     }
 

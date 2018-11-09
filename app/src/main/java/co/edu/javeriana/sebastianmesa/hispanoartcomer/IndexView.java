@@ -59,6 +59,8 @@ public class IndexView extends AppCompatActivity {
         context = getBaseContext();
         setContentView(R.layout.activity_index_view);
 
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
 
@@ -140,6 +142,8 @@ public class IndexView extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
 
 

@@ -36,7 +36,7 @@ public class FirstTimeView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);

@@ -97,6 +97,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                     intent.putExtra("seleccionNum",position );
                     intent.putExtra("seleccionName", cartaMenuList.get(position).getName());
                     mContext.startActivity(intent);
+
                 }
                 if (position == 3){
                     Intent intent = new Intent(mContext, PuntosDetailsView.class);

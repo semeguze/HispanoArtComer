@@ -49,7 +49,7 @@ public class CompleteInfoView extends AppCompatActivity {
 
         setStatusBarTranslucent(true);
 
-        Log.i("LoginState",  "Estoy en" + this.getLocalClassName());
+        Log.i("dondePesoHaber", " * Estoy en :" + getLocalClassName());
 
         prefManager = new PrefManager(this);
 
@@ -102,6 +102,7 @@ public class CompleteInfoView extends AppCompatActivity {
         prefManager.setIsInfoComplete(false);
 
         startActivity(new Intent(getBaseContext(), IndexView.class));
+        finish();
 
 
     }
@@ -115,6 +116,16 @@ public class CompleteInfoView extends AppCompatActivity {
     }
 
     private boolean isAlreadyThere (){
+
+//        String uid = null;
+//
+//        try {
+//
+//            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//        }catch (Exception e){
+//            startActivity(new Intent(CompleteInfoView.this, LoginView.class));
+//        }
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

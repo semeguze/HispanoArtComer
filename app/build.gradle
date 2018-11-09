@@ -19,7 +19,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "co.edu.javeriana.sebastianmesa.hispanoartcomer"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -84,6 +84,10 @@ dependencies {
 
     //Progress circle
     implementation 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+
+    //Botón personalizado
+    implementation 'com.github.jd-alexander:android-flat-button:v1.1'
+    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 
 
 }

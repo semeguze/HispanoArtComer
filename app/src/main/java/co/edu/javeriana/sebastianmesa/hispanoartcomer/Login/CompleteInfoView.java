@@ -103,6 +103,11 @@ public class CompleteInfoView extends AppCompatActivity {
     private boolean isAlreadyThere (){
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        if (uid == null){
+            startActivity(new Intent(CompleteInfoView.this, LoginView.class));
+        }
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference db = database.getReference();
 

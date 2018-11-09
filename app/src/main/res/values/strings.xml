@@ -105,7 +105,7 @@
     <string name="slide_4_desc">Completa un poco de información más y empecemos!</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
+
 
     <!--About info - App-->
     <string name="version">0.1</string>
@@ -115,6 +115,21 @@
 
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="question">Pregunta</string>
+    <string name="play_again_game">Jugar de nuevo</string>
+    <string name="time">15</string>
+    <string name="correct">Bien!</string>
+    <string name="wrongans">Respuesta incorrecta</string>
+    <string name="timeup">Se acabó el tiempo</string>
+    <string name="play_game">Jugar</string>
+    <string name="quit">Salir</string>
+    <string name="next_game">Siguiente</string>
+    <string name="cancel">✖</string>
 
 
 </resources>

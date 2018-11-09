@@ -36,7 +36,8 @@
         <!-- <data android:scheme="@string/fb_login_protocol_scheme" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".Login.LoginView"
+        <activity
+            android:name=".Login.LoginView"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,13 +54,18 @@
         <activity android:name=".Cafeteria.CafeteriaDetailsView" />
         <activity android:name=".Peso.PesoDetailsView" />
         <activity android:name=".Puntos.PuntosDetailsView" />
-        <activity android:name=".Puntos.Questions" />
+        <activity android:name=".Puntos.GameWon" />
+        <activity android:name=".Puntos.MainGameActivity" />
+        <activity android:name=".Puntos.PlayAgain" />
+        <activity android:name=".Puntos.Time_Up" />
+        <activity android:name=".Puntos.TriviaQuestion" />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="6e4daf8cf41cf8a621e70f064f991dda9bbc73a8" />
 
-        <activity android:name=".Restaurante.RestauranteAditivosView"></activity>
+        <activity android:name=".Restaurante.RestauranteAditivosView" />
     </application>
 
 </manifest>

@@ -1,111 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/fbutton_color_midnight_blue"
     tools:context=".Puntos.PuntosDetailsView">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Quiz time!"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
 
-            <Button
-                android:id="@+id/b1"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#f0eb79"
-                android:foreground="?attr/selectableItemBackground"
-                android:drawableTop="@drawable/ic_comida_saludable"
-                android:paddingTop="25dp"
-                android:text="Comida Saludable"
-                android:textAllCaps="false"
-                android:textColor="#2f2e2e"
-                android:textSize="18sp" />
+    </View>
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_leon"/>
 
-            <Button
-                android:id="@+id/b2"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#524d47"
-                android:foreground="?attr/selectableItemBackground"
-                android:drawableTop="@drawable/ic_comida_saludable"
-                android:paddingTop="25dp"
-                android:text="Quiz 2"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
-        </LinearLayout>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/playGame"
+        android:layout_width="300dp"
+        android:text="Empezar"
+        fbutton:fButtonColor="@color/fbutton_color_emerald"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/b3"
-                android:layout_width="0dp"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_height="200dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#e7595d"
-                android:drawableLeft="@drawable/ic_comida_saludable"
-                android:paddingLeft="45dp"
-                android:text="Quiz 3"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/b4"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#a084d1"
-                android:drawableTop="@drawable/ic_comida_saludable"
-                android:paddingTop="25dp"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="Quiz 4"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/b5"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#80e7a9"
-                android:drawableTop="@drawable/ic_comida_saludable"
-                android:paddingTop="25dp"
-                android:text="Quiz ... n"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/quit"
+        android:layout_width="300dp"
+        android:text="Volver"
+        fbutton:fButtonColor="@color/fbutton_color_carrot"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+</LinearLayout>

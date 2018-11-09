@@ -91,15 +91,14 @@
     <string name="slide_0_title">Bienvenido!</string>
     <string name="slide_0_desc">Gracias por utilizar HISPANO ARTCOMER! Conoce un poco mas de la aplicación</string>
 
-    <string name="slide_1_title">Alguien dijo comer?</string>
+    <string name="slide_1_title">¿Alguien dijo comer?</string>
     <string name="slide_1_desc">Accede al menú del Restaurante y Cafetería para ver que tenemos para ti!</string>
 
     <string name="slide_2_title">Tu peso</string>
     <string name="slide_2_desc">Manten el control de tu peso en un solo lugar!</string>
 
     <string name="slide_3_title">Hagamoslo un poco más... divertido!</string>
-    <string name="slide_3_desc">Cumple retos diarios, sube niveles y suma puntos!</string>
-    <string name="slide_3_desc_opt">(... y demuestra que eres el mejor de tus amigos 🤭)</string>
+    <string name="slide_3_desc">Completa quices y suma puntos!</string>
 
     <string name="slide_4_title">Eso es todo</string>
     <string name="slide_4_desc">Completa un poco de información más y empecemos!</string>

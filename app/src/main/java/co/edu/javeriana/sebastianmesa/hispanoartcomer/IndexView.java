@@ -144,9 +144,6 @@ public class IndexView extends AppCompatActivity {
         }
 
 
-
-
-
     }
 
     public void logout (){

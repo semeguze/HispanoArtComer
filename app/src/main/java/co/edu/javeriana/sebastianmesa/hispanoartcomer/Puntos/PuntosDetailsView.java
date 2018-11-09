@@ -23,6 +23,12 @@ public class PuntosDetailsView extends AppCompatActivity {
         playGame =(FButton)findViewById(R.id.playGame);
         quit = (FButton) findViewById(R.id.quit);
         tQ = (TextView)findViewById(R.id.tQ);
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Cheetah Kick.otf");
+        tQ.setTypeface(type);
+        tQ.setTextSize(60);
+
         //PlayGame button - it will take you to the MainGameActivity
         playGame.setOnClickListener(new View.OnClickListener() {
             @Override
